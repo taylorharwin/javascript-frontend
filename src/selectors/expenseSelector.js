@@ -18,7 +18,7 @@ export const expenseSelector = (state) => {
 
 	const groupArrays = Object.keys(expenseGroups).map((date) => {
 		return {
-			date: format(new Date(date), "ccc, LLL Lo"),
+			date: format(new Date(date), "EEE, LLL do"),
 			expenses: expenseGroups[date],
 		};
 	});
