@@ -1,4 +1,4 @@
-const API_BASE = "localhost";
+const API_BASE = "http://localhost:8080";
 
 export const mockExpenses = {
 	abc: {
@@ -25,7 +25,10 @@ export const mockExpenses = {
 };
 
 const loadExpensesAPICall = async () => {
-	return Promise.resolve(mockExpenses);
+	const res = await fetch(`${API_BASE}/expenses`);
+	const json = await res.json();
+	console.log(json);
+	return json.expenses;
 };
 
 export { loadExpensesAPICall };

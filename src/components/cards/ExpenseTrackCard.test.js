@@ -5,7 +5,7 @@ import ExpenseTrackCard from "./ExpenseTrackCard";
 const workExpense = {
 	id: "abc",
 	name: "test expense",
-	amount: 1.324,
+	amount: 1.32,
 	status: "WORK",
 	date: "2021-03-23T18:25:43.511Z",
 };
@@ -13,7 +13,7 @@ const workExpense = {
 const personalExpense = {
 	id: "fff",
 	name: "test expense",
-	amount: 1.324,
+	amount: 1.32,
 	status: "PERSONAL",
 	date: "2021-03-23T18:25:43.511Z",
 };
@@ -35,7 +35,7 @@ describe("ExpenseTrackCard", () => {
 		);
 		const workButtons = wrapper.find("PrimaryButton");
 		workButtons.first().simulate("click");
-		expect(onTrackExpense.calledOnceWith("abc", "WORK")).toEqual(true);
+		expect(onTrackExpense.calledOnceWith("abc", "work")).toEqual(true);
 	});
 	it("clicks the personal expense button and tracks a personal expense", () => {
 		const onTrackExpense = sinon.spy();
@@ -49,6 +49,6 @@ describe("ExpenseTrackCard", () => {
 		const workButtons = wrapper.find("PrimaryButton");
 		workButtons.at(1).simulate("click");
 
-		expect(onTrackExpense.calledOnceWith("fff", "PERSONAL")).toEqual(true);
+		expect(onTrackExpense.calledOnceWith("fff", "personal")).toEqual(true);
 	});
 });

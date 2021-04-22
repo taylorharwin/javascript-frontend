@@ -17,6 +17,8 @@ export const loadExpensesSuccess = ({ expenses }) => ({
 	expenses,
 });
 
+export const loadExpenseSuccess = ({ expense }) => ({});
+
 export const trackExpense = () => {
 	return async (dispatch) => {
 		try {
@@ -28,7 +30,6 @@ export const loadExpenses = () => {
 	return async (dispatch) => {
 		try {
 			const expenses = await loadExpensesAPICall();
-			debugger;
 			dispatch(loadExpensesSuccess({ expenses: expenses }));
 		} catch (err) {
 			dispatch({

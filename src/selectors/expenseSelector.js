@@ -3,7 +3,8 @@ import { format } from "date-fns";
 export const expenseSelector = (state) => {
 	const expenseGroups = Object.values(state.trackExpense.expenses).reduce(
 		(groups, expense) => {
-			const date = expense.date.split("T")[0];
+			debugger;
+			const date = expense.date;
 			if (!groups[date]) {
 				groups[date] = [];
 			}
@@ -14,6 +15,7 @@ export const expenseSelector = (state) => {
 	);
 
 	const groupArrays = Object.keys(expenseGroups).map((date) => {
+		console.log(date);
 		return {
 			date: format(new Date(date), "ccc, LLL Lo"),
 			expenses: expenseGroups[date],

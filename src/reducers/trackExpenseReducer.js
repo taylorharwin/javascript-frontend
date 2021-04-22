@@ -10,7 +10,6 @@ const initialState = {
 const trackExpenseReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_EXPENSES_SUCCESS: {
-      debugger;
       state.expenses = action.expenses;
       return { ...state };
     }

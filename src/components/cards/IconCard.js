@@ -1,11 +1,10 @@
 import React from "react";
 
-const IconCard = ({ name, IconComponent }) => {
-	console.log(IconComponent);
+const IconCard = ({ name, children }) => {
 	return (
 		<div className="icon-card">
 			<strong>{name}</strong>
-			<div>{IconComponent}</div>
+			<div>{children}</div>
 		</div>
 	);
 };

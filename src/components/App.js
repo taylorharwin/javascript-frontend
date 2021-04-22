@@ -57,10 +57,9 @@ export const App = ({ trackExpense, orderedExpenses, loadExpenses }) => {
                 } else {
                   return (
                     <div className="card">
-                      <IconCard
-                        name={expense.name}
-                        IconComponent={getIcon(expense.status)}
-                      />
+                      <IconCard name={expense.name}>
+                        {getIcon(expense.status)}
+                      </IconCard>
                     </div>
                   );
                 }
