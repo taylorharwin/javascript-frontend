@@ -1,5 +1,8 @@
 import reducer from "./trackExpenseReducer";
-import { LOAD_EXPENSES_SUCCESS } from "../constants/ActionTypes";
+import {
+	LOAD_EXPENSES_SUCCESS,
+	TRACK_EXPENSE_SUCCESS,
+} from "../constants/ActionTypes";
 
 import { mockExpenses } from "../../tests/mocks";
 

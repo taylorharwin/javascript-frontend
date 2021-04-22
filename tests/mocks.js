@@ -3,14 +3,14 @@ export const mockExpenses = {
 		id: "abc",
 		name: "test expense",
 		amount: 1.324,
-		status: "WORK",
+		status: "work",
 		date: "2021-03-23T18:25:43.511Z",
 	},
 	fff: {
 		id: "fff",
 		name: "test expense",
 		amount: 1.324,
-		status: "PERSONAL",
+		status: "personal",
 		date: "2021-03-23T18:25:43.511Z",
 	},
 };

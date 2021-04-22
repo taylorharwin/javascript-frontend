@@ -1,34 +1,25 @@
 const API_BASE = "http://localhost:8080";
 
-export const mockExpenses = {
-	abc: {
-		id: "abc",
-		name: "test expense",
-		amount: 1.324,
-		status: "WORK",
-		date: "2021-03-23T18:25:43.511Z",
-	},
-	fff: {
-		id: "fff",
-		name: "test expense",
-		amount: 1.324,
-		status: "PERSONAL",
-		date: "2021-03-23T18:25:43.511Z",
-	},
-	ghi: {
-		id: "ghi",
-		name: "test expense",
-		amount: 1.324,
-		status: "UNKNOWN",
-		date: "2021-03-23T18:25:43.511Z",
-	},
-};
-
 const loadExpensesAPICall = async () => {
 	const res = await fetch(`${API_BASE}/expenses`);
 	const json = await res.json();
-	console.log(json);
 	return json.expenses;
 };
 
-export { loadExpensesAPICall };
+const trackExpenseAPICall = async (expenseID, expenseStatus) => {
+	const res = await fetch(`${API_BASE}/expenses/track`, {
+		method: "POST",
+		mode: "cors",
+		cache: "no-cache",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		redirect: "follow", // manual, *follow, error
+		referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+		body: JSON.stringify({ id: expenseID, status: expenseStatus }),
+	});
+	const json = await res.json();
+	return json.expense;
+};
+
+export { loadExpensesAPICall, trackExpenseAPICall };

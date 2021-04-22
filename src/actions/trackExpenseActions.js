@@ -1,15 +1,15 @@
 import {
 	TRACK_EXPENSE_SUCCESS,
+	TRACK_EXPENSE_ERROR,
 	LOAD_EXPENSES_SUCCESS,
 	LOAD_EXPENSES_ERROR,
 } from "../constants/actionTypes";
 
-import { loadExpensesAPICall } from "../api";
+import { loadExpensesAPICall, trackExpenseAPICall } from "../api";
 
-export const trackExpenseSuccess = ({ expenseID, expenseType }) => ({
+export const trackExpenseSuccess = ({ expense }) => ({
 	type: TRACK_EXPENSE_SUCCESS,
-	expenseID,
-	expenseType,
+	expense,
 });
 
 export const loadExpensesSuccess = ({ expenses }) => ({
@@ -17,12 +17,24 @@ export const loadExpensesSuccess = ({ expenses }) => ({
 	expenses,
 });
 
-export const loadExpenseSuccess = ({ expense }) => ({});
+export const trackExpenseError = ({ error }) => ({
+	type: TRACK_EXPENSE_ERROR,
+	error,
+});
 
-export const trackExpense = () => {
+export const loadExpensesError = ({ error }) => ({
+	type: LOAD_EXPENSES_ERROR,
+	error,
+});
+
+export const trackExpense = (expenseID, expenseType) => {
 	return async (dispatch) => {
+		const expense = await trackExpenseAPICall(expenseID, expenseType);
+		dispatch(trackExpenseSuccess({ expense }));
 		try {
-		} catch (err) {}
+		} catch (error) {
+			dispatch(trackExpenseError({ error }));
+		}
 	};
 };
 
@@ -30,11 +42,9 @@ export const loadExpenses = () => {
 	return async (dispatch) => {
 		try {
 			const expenses = await loadExpensesAPICall();
-			dispatch(loadExpensesSuccess({ expenses: expenses }));
-		} catch (err) {
-			dispatch({
-				type: LOAD_EXPENSES_ERROR,
-			});
+			dispatch(loadExpensesSuccess({ expenses }));
+		} catch (error) {
+			dispatch(loadExpensesError({ error }));
 		}
 	};
 };

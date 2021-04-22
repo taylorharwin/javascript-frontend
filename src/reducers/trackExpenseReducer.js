@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 import {
   TRACK_EXPENSE_SUCCESS,
   LOAD_EXPENSES_SUCCESS,
@@ -10,16 +12,15 @@ const initialState = {
 const trackExpenseReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_EXPENSES_SUCCESS: {
-      state.expenses = action.expenses;
-      return { ...state };
+      const keyed = _.keyBy(action.expenses, "id");
+      return {
+        ...state,
+        expenses: keyed,
+      };
     }
     case TRACK_EXPENSE_SUCCESS: {
       const toUpdate = state.expenses;
-
-      toUpdate[action.expense.id] = {
-        ...toUpdate[action.expense.id],
-        expenseType: action.expenseType,
-      };
+      toUpdate[action.expense.id] = action.expense;
 
       return {
         ...state,
