@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import exampleReducer from "./exampleReducer";
+import trackExpenseReducer from "./trackExpenseReducer";
 
 export default combineReducers({
-  example: exampleReducer,
+	trackExpense: trackExpenseReducer,
 });

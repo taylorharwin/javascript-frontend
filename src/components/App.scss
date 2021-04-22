@@ -1,29 +1,94 @@
 .app {
   text-align: center;
+  background-color: #f2f5f4;
+  color: #3e4241;
+  height: 100vh;
 
-  &-logo {
-    height: 40vmin;
-    pointer-events: none;
-    animation: app-logo-spin infinite 20s linear;
-  }
- 
   &-header {
-    background-color: #282c34;
-    min-height: 100vh;
+    background-color: #ffffff;
+    height: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+    font-size: 17px;
   }
-}
 
-@keyframes app-logo-spin {
-  from {
-    transform: rotate(0deg);
+  &-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    padding: 24px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .calculated-number {
+    color: #228b22;
+  }
+  .card {
+    margin-bottom: 8px;
+  }
+
+  .expense-card {
+    background-color: #ffffff;
+    padding: 8px;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    &-header {
+      padding-bottom: 8px;
+      border-bottom: 1px solid #dae0dd;
+      align-self: flex-start;
+      text-align: initial;
+      width: 100%;
+    }
+  }
+
+  .icon-card {
+    min-width: 400px;
+    padding: 8px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .button {
+    &-primary {
+      display: flex;
+      justify-content: flex-start;
+      align-content: center;
+      padding: 8px;
+      border: 1px solid #dae0dd;
+      border-radius: 4px;
+      background-color: #ffffff;
+      cursor: pointer;
+      color: black;
+      width: 100%;
+    }
+  }
+
+  .center-line-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    &:before,
+    &:after {
+      content: "";
+      flex: 1 1;
+      border-bottom: 1px solid #dae0dd;
+      margin: auto;
+    }
+    &:before {
+      margin-right: 10px;
+    }
+    &:after {
+      margin-left: 10px;
+    }
   }
 }
